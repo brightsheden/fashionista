@@ -1,0 +1,28 @@
+<!-- create_blog.html -->
+
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-bold mb-4">Create Blog</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="id_title" class="block text-sm font-semibold text-gray-600">Title:</label>
+            {{ form.title }}
+        </div>
+
+        <div class="mb-4">
+            <label for="id_content" class="block text-sm font-semibold text-gray-600">Content:</label>
+            {{ form.content|safe }} {# Use |safe to mark the content as safe HTML #}
+        </div>
+
+        
+
+        <button type="submit" class="btn btn-primary">Create Blog</button>
+    </form>
+</div>
+
+{% endblock %}

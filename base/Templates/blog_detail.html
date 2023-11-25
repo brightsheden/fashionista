@@ -1,0 +1,31 @@
+<!-- blog_detail.html -->
+
+{% extends "main.html" %}
+{% block title %}
+{{ page_title }}
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-bold">{{ blog.title }}</h1>
+        <p class="text-gray-400">{{ blog.timestamp }}</p>
+    </div>
+</div>
+
+<div class='container mx-auto mt-8'>
+    <button class='btn' onclick="goBack()">Go Back</button>
+</div>
+
+<div class="container mx-auto mt-8">
+    <div class="flex justify-center">
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="max-w-full h-auto">
+    </div>
+
+    <div class="mt-8">
+        <div class="prose max-w-full">
+            {{ blog.content|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero min-h-screen" style="background-image: url(https://img.freepik.com/free-photo/shop-clothing-clothes-shop-hanger-modern-shop-boutique_1150-8886.jpg?w=740&t=st=1700520568~exp=1700521168~hmac=fa9f7225afc479d1345bd660b0201f0184377a2692fc7bb4792dae3e5cf2fd24);">
+    <div class="hero-overlay bg-opacity-60"></div>
+    <div class="hero-content text-center text-neutral-content">
+      <div class="">
+        <h1 class="mb-5 text-5xl font-bold w-full">Elevate Your Style with FashionFlare Picks</h1>
+        
+        <p>Discover a curated collection of fashion-forward picks that redefine your wardrobe. From chic ensembles to statement accessories, FashionFlare brings you the latest trends and timeless classics. Your style journey starts here</p>
+     
+      </div>
+    </div>
+</div>
+
+<div class="container mx-auto my-8">
+    <div class="flex justify-between">
+        <h2 class="text-2xl">Latest Products/Trends</h2>
+        <a href="{% url 'home' %}">View all</a>
+    </div>
+
+    <!-- Search Form -->
+    <form method="get" action="{% url 'home' %}" class="mt-4 w-full ">
+        <div class="flex items-center">
+            <input type="text" name="q" id="search" placeholder="Search products" class="border p-2 rounded-md w-full">
+            <button type="submit" class="ml-2 btn btn-primary text-black">Search</button>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-4">
+        {% for product in products %}
+            <div class="card card-compact bg-base-100 shadow-xl">
+                <a href="{% url 'product_detail' slug=product.slug %}">
+                    <figure><img src="{{ product.thumbnail.url }}" alt="Product Image" /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ product.name }}</h2>
+                        <p>{{ product.description|truncatechars:100 }}</p>
+                        <div class="card-actions justify-end">
+                            <a href="{% url 'product_detail' slug=product.slug %}">
+                                <button class="btn btn-primary">Buy Now</button>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-8 container mx-auto">
+        <span class="pagination">
+            {% if products.has_previous %}
+                <a href="?page=1" class="btn btn-secondary">&laquo; first</a>
+                <a href="?page={{ products.previous_page_number }}" class="btn btn-secondary">previous</a>
+            {% endif %}
+
+            <span class="current">Page {{ products.number }} of {{ products.paginator.num_pages }}.</span>
+
+            {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}"  class="btn btn-secondary">next</a>
+                <a href="?page={{ products.paginator.num_pages }}" class="btn btn-secondary">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock content %}

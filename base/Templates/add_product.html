@@ -1,0 +1,43 @@
+
+{% extends "main.html" %}
+{% block content %}
+
+
+<div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold mb-4">Add Product</h1>
+
+    <form method="post" enctype="multipart/form-data" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        {% csrf_token %}
+
+        <!-- Product Form -->
+        <div class="mb-4">
+            <label for="id_name" class="block text-sm font-semibold text-gray-600">Product Name:</label>
+            {{ product_form.name }}
+        </div>
+
+        <div class="mb-4">
+            <label for="id_description" class="block text-sm font-semibold text-gray-600">Description:</label>
+            {{ product_form.description }}
+        </div>
+
+        <div class="mb-4">
+            <label for="id_thumbnail" class="block text-sm font-semibold text-gray-600">Thumbnail:</label>
+            {{ product_form.thumbnail }}
+        </div>
+
+        <!-- Add more fields as needed -->
+
+        <!-- Image Forms -->
+        {% for image_form in image_forms %}
+            <div class="mb-4">
+                <label for="{{ image_form.id_for_label }}" class="block text-sm font-semibold text-gray-600">Image:</label>
+                {{ image_form }}
+            </div>
+        {% endfor %}
+
+        <!-- Submit Button -->
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>
+    </form>
+</div>
+
+{% endblock content %}

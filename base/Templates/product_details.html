@@ -1,0 +1,105 @@
+
+{% extends "main.html" %}
+{% load custom_filters %}
+{% block title %}
+{{ product_title }}
+{% endblock %}
+{% load social_share %}
+{% load static %}
+{% block content %}
+
+
+
+<div class='container mx-auto'>
+
+    <div class='btn my-4'> 
+        <button onclick="goBack()">Go Back</button>
+
+    </div>
+   
+
+    <div  class="flex flex-col p-2 gap-4 md:flex-row">
+        <div class='w-full space-y-2'>
+            <div class='w'>
+                <img class='w-full  md:w-1/2 ' src='{{product.thumbnail.url}}'/>
+
+            </div>
+
+            
+
+            <div class='flex gap-2  overflow-x-scroll'>
+                {% for image in product.images.all %}
+                <img class='w-[100%] h-[250px]' src="{{ image.image.url }}" alt="Product Image">
+             {% endfor %}
+       
+            </div>
+
+        </div>
+        <div class=' w-full'>
+            <h1 class='text-xl md:text-2xl mb-2 font-semibold'>{{product.name}}</h1>
+            <hr>
+            <p class="text-xl md:text-3xl mt-2">${{product.price}}</p>
+            <div>
+                <h1 class='text-xl md:text-2xl font-bold my-4'>Products Details</h1>
+                <p class="text-base ">{{product.details|format_details|safe}}</p>
+            </div>
+            <hr>
+
+            <div>
+                <h1 class='text-xl font-bold md:text-2xl my-4'>About this Item</h1>
+                <p class="text-base ">{{product.aboout|format_details|linebreaksbr|safe}}</p>
+            </div>
+
+            <div>
+                <h1 class='md:text-2xl my-4 font-semibold'>Description</h1>
+                <p class="text-base ">{{product.description|format_details|linebreaksbr|safe}}</p>
+            </div>
+
+
+            
+
+        </div>
+        <div class=' rounded-md w-full p-2'>
+            <div class='w-full'>
+
+                <p class='text-xl font-bold'>${{product.price}}</p>
+                <span>In Stock</span>
+                <div>
+                    <a href="{{product.afflink}}">
+                    <button class='btn w-full bg-blue-200'>Buy Now</button>
+                    </a>
+                </div>
+                <div class='mt-4 border-2 p-2 flex justify-between'>
+
+                    
+                  
+                     
+
+                 
+                      {% post_to_facebook object_or_url "facebook" %}
+                      {% post_to_linkedin  product.name object_or_url  %}
+                      {% post_to_telegram product.name  object_or_url %}
+                </div>
+
+            </div>
+           
+            
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+{% endblock content %}
