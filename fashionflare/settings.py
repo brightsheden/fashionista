@@ -25,7 +25,7 @@ SECRET_KEY = 'ntfjmrx+6z@_564pa4k+%u7b9zw3g0y_!^_!#b(d4#scfhqfgl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://fashionistafair.com/']
+ALLOWED_HOSTS = ['https://fashionistafair.com/' , 'fashionistafair.com', 'www.fashionistafair.com', '127.0.0.1']
 
 
 # Application definition
@@ -101,13 +101,27 @@ WSGI_APPLICATION = 'fashionflare.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'fashzzht_fashionista',
+        'USER': 'plpfmcrs_sheden',
+        'PASSWORD' : '@Shedenbright1',
+        
+        'OPTIONS': {
+            'autocommit': True,
+            'sql_mode':'traditional',
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
