@@ -25,7 +25,7 @@ SECRET_KEY = 'ntfjmrx+6z@_564pa4k+%u7b9zw3g0y_!^_!#b(d4#scfhqfgl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://fashionistafair.com/']
 
 
 # Application definition
