@@ -113,7 +113,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'fashzzht_fashionista',
-        'USER': 'plpfmcrs_sheden',
+        'USER': 'fashzzht_sheden',
         'PASSWORD' : '@Shedenbright1',
         
         'OPTIONS': {
