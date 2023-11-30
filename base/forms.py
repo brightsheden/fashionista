@@ -16,7 +16,7 @@ class BlogForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'thumbnail', 'images']
+        fields = ['name', 'content', 'thumbnail']
 
 class ProductImageForm(forms.ModelForm):
     class Meta:

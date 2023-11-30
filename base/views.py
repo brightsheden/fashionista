@@ -54,7 +54,7 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['product_title'] = self.get_object().name
-        context['product_description'] = self.get_object().description
+        context['product_description'] = self.get_object().content
         context['prodct_image'] = self.get_object().thumbnail
         return context
 

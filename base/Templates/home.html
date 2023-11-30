@@ -6,9 +6,9 @@
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content">
       <div class="">
-        <h1 class="mb-5 text-5xl font-bold w-full">Elevate Your Style with FashionFlare Picks</h1>
+        <h1 class="mb-5 text-5xl font-bold w-full">Elevate Your Style with Fashionista Picks</h1>
         
-        <p>Discover a curated collection of fashion-forward picks that redefine your wardrobe. From chic ensembles to statement accessories, FashionFlare brings you the latest trends and timeless classics. Your style journey starts here</p>
+        <p>Welcome to Fashionista, your premier destination for fashion trends and clothing. As an Amazon affiliate, we offer a curated selection of Amazon's top fashion products. Our collections span from the latest trends to timeless classics, catering to diverse styles and budgets. We also provide fashion tips, style guides, and news to keep you updated. Shop with us for a seamless, enjoyable experience and high-quality products delivered to your doorstep. Discover the world of fashion with Fashionista! 😊</p>
      
       </div>
     </div>
@@ -28,7 +28,7 @@
         </div>
     </form>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-4">
+    <div class="mx-2  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-4">
         {% for product in products %}
             <div class="card card-compact bg-base-100 shadow-xl">
                 <a href="{% url 'product_detail' slug=product.slug %}">
@@ -36,7 +36,8 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ product.name }}</h2>
                         <p>{{ product.description|truncatechars:100 }}</p>
-                        <div class="card-actions justify-end">
+                        <div class="card-actions justify-between items-center">
+                            <span class='text-2xl font-semibold '>${{product.price}}</span>
                             <a href="{% url 'product_detail' slug=product.slug %}">
                                 <button class="btn btn-primary">Buy Now</button>
                             </a>
@@ -44,7 +45,9 @@
                     </div>
                 </a>
             </div>
+            
         {% endfor %}
+      
     </div>
 
     <!-- Pagination -->
@@ -64,5 +67,7 @@
         </span>
     </div>
 </div>
+
+
 
 {% endblock content %}

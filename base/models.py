@@ -13,12 +13,9 @@ class Product(models.Model):
     price = models.DecimalField(default=0.00, decimal_places=2,max_digits=10)
     thumbnail = models.ImageField(blank=True, null=True)
     afflink= models.URLField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    details =  models.TextField(blank=True, null=True)
-    aboout = models.TextField(blank=True, null=True)
-    images = models.ManyToManyField('ProductImage', related_name='product_images', blank=True)
+    content = RichTextField(blank=True, null=True)
     category =  models.CharField(default='fashion', max_length=200, blank=True, null=True)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(max_length=500,unique=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -53,7 +50,7 @@ class Blog(models.Model):
     image = models.ImageField(blank=True, null=True)
     content = RichTextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    slug = models.SlugField(max_length=500, unique=True, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:

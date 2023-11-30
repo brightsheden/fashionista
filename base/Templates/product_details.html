@@ -39,21 +39,13 @@
             <h1 class='text-xl md:text-2xl mb-2 font-semibold'>{{product.name}}</h1>
             <hr>
             <p class="text-xl md:text-3xl mt-2">${{product.price}}</p>
-            <div>
-                <h1 class='text-xl md:text-2xl font-bold my-4'>Products Details</h1>
-                <p class="text-base ">{{product.details|format_details|safe}}</p>
-            </div>
-            <hr>
+            <div class="prose max-w-full">
+               
+                {{product.content|safe}}
 
-            <div>
-                <h1 class='text-xl font-bold md:text-2xl my-4'>About this Item</h1>
-                <p class="text-base ">{{product.aboout|format_details|linebreaksbr|safe}}</p>
+                <a class='link link-secondary' href={{product.afflink}}>Read More!!</a>
             </div>
-
-            <div>
-                <h1 class='md:text-2xl my-4 font-semibold'>Description</h1>
-                <p class="text-base ">{{product.description|format_details|linebreaksbr|safe}}</p>
-            </div>
+            
 
 
             
@@ -79,6 +71,12 @@
                       {% post_to_facebook object_or_url "facebook" %}
                       {% post_to_linkedin  product.name object_or_url  %}
                       {% post_to_telegram product.name  object_or_url %}
+
+                     
+                </div>
+                <div>
+                    <div id="container-b2d6ba408322ac24a3ab9ce051d6d5e0"></div>
+                    
                 </div>
 
             </div>
